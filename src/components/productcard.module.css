@@ -1,6 +1,6 @@
 div.card {
-    width: 250px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -22,14 +22,16 @@ div.cardtext {
 }
 
 div.cardtext h1{
-    font-style: normal;
-    font-size: larger;
+    font-style: initial;
+    font-size: medium;
     text-align: center;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 div.cardtext h3{
     font-style: normal;
-    font-size: medium;
+    font-size: small;
     text-align: left;
+    padding-inline: 20px;
 }
