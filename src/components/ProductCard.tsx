@@ -1,10 +1,10 @@
-import styles from './productcard.module.css'
 import Image from 'next/image'
+import InteractiveCard from './InteractiveCard'
 
 export default function ProductCard({ImgSrc, Topic, Description}:{ImgSrc:string, Topic:string, Description:string}) {
     return (
-        <div className='w-1/5 h-[350px] rounded-lg shadow-lg mx-8'>
-            <div className='w-full h-[70%] relative rounded-t-lg'>
+        <InteractiveCard>
+            <div className='w-full h-[70%] relative rounded-t-lg '>
                 <Image src={ImgSrc}
                 alt='Product Picture'
                 fill={true}
@@ -16,6 +16,6 @@ export default function ProductCard({ImgSrc, Topic, Description}:{ImgSrc:string,
                     {Description}
                 </h3>
             </div>
-        </div>
+        </InteractiveCard>
     )
 }
