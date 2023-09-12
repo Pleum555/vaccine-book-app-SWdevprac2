@@ -3,7 +3,7 @@ import styles from './productcard.module.css'
 import Image from 'next/image'
 import React from 'react'
 
-export default function InteractiveCard({children}:{children:React.ReactNode}) {
+export default function InteractiveCard({children, contentName}:{children:React.ReactNode, contentName:string}) {
     
     function onCardMouseAction(event:React.SyntheticEvent){
         if(event.type=='mouseover'){
@@ -21,11 +21,11 @@ export default function InteractiveCard({children}:{children:React.ReactNode}) {
     }
 
     function onCardSelected(){
-        alert("Card is clicked")
+        alert("You select " + contentName)
     }
 
     return (
-        <div className='w-1/5 h-[350px] rounded-lg shadow-lg mx-8 bg-white'
+        <div className='w-1/5 h-[350px] rounded-lg shadow-lg mx-8 bg-white mb-4'
         onClick={()=>onCardSelected()}
         onMouseOver={(e)=>onCardMouseAction(e)}
         onMouseOut={(e)=>onCardMouseAction(e)}>

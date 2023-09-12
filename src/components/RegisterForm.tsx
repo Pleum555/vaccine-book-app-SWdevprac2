@@ -3,20 +3,30 @@ import { DatePicker } from "@mui/x-date-pickers"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { Input, MenuItem, Select } from "@mui/material"
+import { useState } from "react"
 
 export function RegisterDate(){
+
+    const [reserveDate, setReserveDate] = useState(null)
+
     return(
         <div className="pl-16">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker className="bg-white"/>
+                <DatePicker className="bg-white"
+                value={reserveDate}
+                onChange={(value)=>{setReserveDate(value); alert(value)}}/>
             </LocalizationProvider>
         </div>
     )
 }
 export function HospitalOption(){
+
+    const [hospital, setHospital] = useState('Chula')
+
     return(
         <div className=" pl-16">
-            <Select variant="standard" name="hospital" id="hospital"
+            <Select variant="standard" name="hospital" id="hospital" value={hospital}
+            onChange={(e)=>{setHospital(e.target.value)}}
             className="h-[2em] w-[200px] bg-white rounded-lg px-3 py-2 ring-1">
                 <MenuItem value="Chula">Chulalongkorn Hospital</MenuItem>
                 <MenuItem value="Rajavithi">Rajavithi Hospital</MenuItem>

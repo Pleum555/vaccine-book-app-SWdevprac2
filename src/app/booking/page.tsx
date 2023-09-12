@@ -4,10 +4,10 @@ import { FullName, HospitalOption, RegisterDate, NationalID } from '@/components
 export default function Bookings() {
   return (
     <main className='h-screen bg-stone-200 w-[100%] flex flex-col items-center space-y-4'>
-        <Banner imgSrc='/img/Background2.jpg' topic='Booking Statement' desc='Welcome to booking'/>
+        {/* <Banner imgSrc={['/img/Background.jpg', '/img/Background2.jpg', '/img/corona-5974596_1280.png']} topic='Booking Statement' desc='Welcome to booking'/> */}
 
 
-        <div className='bg-slate-200 w-[80vw] rounded-lg shadow-lg ring-1 py-5 space-y-4'>
+        <div className='bg-slate-200 w-[80vw] rounded-lg shadow-lg ring-1 py-5 space-y-4 my-4'>
             <div className='text-xl font-medium text-black flex flex-row justify-center'>New Booking</div>
 
             <div className='text-md text-left text-gray-600 pl-12'>ชื่อ-นามสกุล</div>

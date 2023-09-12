@@ -1,10 +1,15 @@
+'use client'
+import { useState } from 'react'
 import styles from './banner.module.css'
 import Image from 'next/image'
 
-export default function Banner({imgSrc, topic, desc}:{imgSrc:string, topic:string, desc:string}){
+export default function Banner({imgSrc, topic, desc}:{imgSrc:string[], topic:string, desc:string}){
+    const imgnumber = imgSrc.length
+    const [index, setIndex] = useState(0)
+
     return (
-        <div className={styles.banner}>
-            <Image src={imgSrc}
+        <div className={styles.banner} onClick={()=>{setIndex((index+1)%imgnumber)}}>
+            <Image src={imgSrc[index]}
             alt='cover'
             fill={true}
             objectFit='cover'
