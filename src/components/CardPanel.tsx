@@ -17,9 +17,7 @@ export default function CardPanel(){
             default: return ratingList
         }
     }
-
-    const dvds = new  Map<string, number>()
-
+    
     const [ ratingList, dispatchRating ] = useReducer(reducerRating, new Map<string, number>())
 
     return(
