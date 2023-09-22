@@ -1,7 +1,5 @@
-'use client'
 import Image from 'next/image'
 import InteractiveCard from './InteractiveCard'
-import { useState } from 'react';
 import { Rating } from '@mui/material';
 
 export default function ProductCard({ImgSrc, Topic, rating, onRating}:{ImgSrc:string, Topic:string, rating:number, onRating:Function}) {
