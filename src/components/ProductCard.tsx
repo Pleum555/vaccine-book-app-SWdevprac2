@@ -16,7 +16,7 @@ export default function ProductCard({ImgSrc, Topic, rating, onRating}:{ImgSrc:st
             <div className='w-full h-[15%] text-black font-semibold pt-2 text-center'>{Topic}</div>
             
             <Rating name="rating" value={rating} precision={0.5}
-            onChange={(e, newValue)=>{onRating(Topic, newValue);}}
+            onChange={(e, newValue)=>{ if(newValue!=null) onRating(Topic, newValue);}}
             onClick={(e)=>{e.stopPropagation();}}
             />
         </InteractiveCard>

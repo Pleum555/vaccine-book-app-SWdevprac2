@@ -1,10 +1,12 @@
 'use client'
-import { useReducer } from 'react'
+import { useReducer, useRef } from 'react'
 import ProductCard from "./ProductCard";
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function CardPanel(){
+
+    // const countRef = useRef(0)
+    // const inputRef = useRef<HTMLInputElement>(null)
 
     const reducerRating = (ratingList:Map<string, number>, action:{type:string, hospitalName:string, rating:number})=>{
         switch(action.type){
@@ -27,7 +29,6 @@ export default function CardPanel(){
         {hid: "002", name: "Rajavithi Hospital", image: "/img/rajavithi.jpg"},
         {hid: "003", name: "Thammasat University Hospital", image: "/img/thammasat.jpg"}
     ]
-    const router = useRouter()
 
     return(
         <div className='block ring-1 rounded-lg mx-6 my-6 bg-sky-50 shadow-lg py-1 '>
@@ -52,6 +53,24 @@ export default function CardPanel(){
                         }}>{hospital}: {rating}
                     </div>)}
             </div>
+            {/* <div className='mx-24'>
+            <button className=' block rounded-md bg-sky-600 hover:bg-indigo-600 px-6 py-2 
+            text-white shadow-sm'
+            onClick={()=>{countRef.current = countRef.current + 1; alert(countRef.current)}}>
+                Count with Ref Object
+            </button>
+            
+            <input type="text" placeholder="Please fill" className="block text-gray-900 text-sm rounded-lg
+            p-2 my-2 bg-purple-50 ring-1 ring-inset ring-purple-400
+            focus:outline-none focus:bg-purple-200 focus:ring-2"
+            ref={inputRef}/>
+            
+            <button className='block rounded-md bg-sky-600 hover:bg-indigo-600 px-6 py-2 
+            text-white shadow-sm'
+            onClick={()=>{ if(inputRef.current!=null) inputRef.current.focus() }}>
+                Focus Input
+            </button>
+            </div> */}
         </div>
     )
 }
