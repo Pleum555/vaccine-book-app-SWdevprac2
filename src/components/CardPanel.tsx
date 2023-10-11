@@ -1,12 +1,23 @@
 'use client'
-import { useReducer, useRef } from 'react'
+import { useReducer, useRef, useEffect, useState } from 'react'
 import ProductCard from "./ProductCard";
 import Link from 'next/link';
+import getHospitals from '@/libs/getHospitals';
 
 export default function CardPanel(){
 
     // const countRef = useRef(0)
     // const inputRef = useRef<HTMLInputElement>(null)
+
+    const [hospitalResponse, setHospitalResponse] = useState(null)
+
+    useEffect(()=>{
+        const fetchData = async () => {
+            const hospitals = await getHospitals()
+            setHospitalResponse(hospitals)
+        }
+        fetchData()
+    }, [])
 
     const reducerRating = (ratingList:Map<string, number>, action:{type:string, hospitalName:string, rating:number})=>{
         switch(action.type){
@@ -24,20 +35,22 @@ export default function CardPanel(){
 
     const [ ratingList, dispatchRating ] = useReducer(reducerRating, new Map<string, number>())
 
-    const mockHospitalRepo = [
-        {hid: "001", name: "Chulalongkorn Hospital", image: "/img/chula.jpg"},
-        {hid: "002", name: "Rajavithi Hospital", image: "/img/rajavithi.jpg"},
-        {hid: "003", name: "Thammasat University Hospital", image: "/img/thammasat.jpg"}
-    ]
+    // const mockHospitalRepo = [
+    //     {hid: "001", name: "Chulalongkorn Hospital", image: "/img/chula.jpg"},
+    //     {hid: "002", name: "Rajavithi Hospital", image: "/img/rajavithi.jpg"},
+    //     {hid: "003", name: "Thammasat University Hospital", image: "/img/thammasat.jpg"}
+    // ]
+
+    if(!hospitalResponse) return (<p>Hospital Panel is Loading ...</p>)
 
     return(
         <div className='block ring-1 rounded-lg mx-6 my-6 bg-sky-50 shadow-lg py-1 '>
             <div style={{margin:"20px", display:"flex", flexDirection:"row", justifyContent:"space-around", alignContent:"space-around",flexWrap:"wrap",
             }}
             >
-                {mockHospitalRepo.map((hospitalItem)=>(
-                        <Link href={`/hospital/${hospitalItem.hid}`} className='w-1/5'>
-                        <ProductCard ImgSrc={hospitalItem.image} Topic={hospitalItem.name} rating = {ratingList.get(hospitalItem.name)??0}
+                {hospitalResponse.data.map((hospitalItem)=>(
+                        <Link href={`/hospital/${hospitalItem.id}`} className='w-1/5'>
+                        <ProductCard ImgSrc={hospitalItem.picture} Topic={hospitalItem.name} rating = {ratingList.get(hospitalItem.name)??0}
                         onRating={(hospital:string, rating:number)=>dispatchRating({type:'add', hospitalName:hospital, rating:rating})}/>
                         </Link>
                 ))}

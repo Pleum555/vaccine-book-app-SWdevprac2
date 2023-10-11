@@ -2,7 +2,7 @@ import Image from 'next/image'
 import InteractiveCard from './InteractiveCard'
 import { Rating } from '@mui/material';
 
-export default function ProductCard({ImgSrc, Topic, rating, onRating}:{ImgSrc:string, Topic:string, rating:number, onRating:Function}) {
+export default function ProductCard({ImgSrc, Topic, rating, onRating}:{ImgSrc:string, Topic:string, rating?:number, onRating?:Function}) {
 
     return (
         <InteractiveCard contentName={ Topic }>
@@ -14,11 +14,17 @@ export default function ProductCard({ImgSrc, Topic, rating, onRating}:{ImgSrc:st
             </div>
 
             <div className='w-full h-[15%] text-black font-semibold pt-2 text-center'>{Topic}</div>
-            
-            <Rating name="rating" value={rating} precision={0.5}
+            {
+                onRating? <Rating name="rating" value={rating} precision={0.5}
+                onChange={(e, newValue)=>{ if(newValue!=null) onRating(Topic, newValue);}}
+                onClick={(e)=>{e.stopPropagation();}}/> : ''
+            }
+
+            {/* <Rating name="rating" value={rating} precision={0.5}
             onChange={(e, newValue)=>{ if(newValue!=null) onRating(Topic, newValue);}}
             onClick={(e)=>{e.stopPropagation();}}
-            />
+            /> */}
+
         </InteractiveCard>
     )
 }
