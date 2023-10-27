@@ -22,14 +22,16 @@ export default async function HospitalCatalog({hospitalJson}:{hospitalJson:Objec
     const hospitalJsonReady = await hospitalJson
 
     return (
-        <div className='block ring-1 rounded-lg mx-6 my-6 bg-sky-50 shadow-lg py-1 '>
+        <div className='block ring-1 rounded-lg bg-sky-50 shadow-lg mx-6 my-6 py-1'>
         Explore {hospitalJsonReady.count} models in our catalog
         <div style={{margin:"20px", display:"flex", 
             flexDirection:"row", justifyContent:"space-around", 
-            alignContent:"space-around",flexWrap:"wrap",}}>
+            alignContent:"space-around",flexWrap:"wrap", padding:"10px"}}>
                 {
                     hospitalJsonReady.data.map((hospitalItem:Object)=>(
-                        <Link href={`/hospital/${hospitalItem.id}`} className='w-1/5'>
+                        <Link href={`/hospital/${hospitalItem.id}`} 
+                        className='w-[100%] sm:w-[50%] md:w-[30%] lg:w-[25%]
+                        p-2 sm:p-4 md:p-4 lg:p-8'>
                         <ProductCard ImgSrc={hospitalItem.picture} Topic={hospitalItem.name} 
                             // rating = {ratingList.get(hospitalItem.name)??0}
                             // onRating={(hospital:string, rating:number)=>dispatchRating({type:'add', hospitalName:hospital, rating:rating})}
