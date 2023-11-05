@@ -18,7 +18,7 @@ export default function Banner({imgSrc, topic, desc}:{imgSrc:string[], topic:str
             <Image src={imgSrc[index]}
             alt='cover'
             fill={true}
-            objectFit='cover'
+            className='object-cover'
             />
             <div className={styles.bannertext}>
                 <h1 className='text-4xl font-medium'>{topic}</h1>
