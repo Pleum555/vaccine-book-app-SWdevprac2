@@ -17,12 +17,8 @@ describe('Hospitals', () => {
     cy.get('#hospital-select-button').click()
     cy.wait(10000)
     cy.get('#hospital-catalog').find('img').should('have.length.at.least', 3);
-    // cy.get('#playPauseButton').contains('Pause')
-    // cy.wait(2000)
-    // cy.get('#playPauseButton').click()
-    // cy.get('#playPauseButton').contains('Play')
-    
-    // Visit Homepage
+
+    // // Visit Homepage
     // cy.visit('/')
     // cy.get('a[href=/hospital]').should('exist')
     // cy.get('a[href=/hospital]').click()
