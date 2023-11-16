@@ -44,13 +44,22 @@ export default async function HospitalPage() {
     }
 
     const session = await getServerSession(authOptions)
-    if(!session || !session.user.token) return null
-
+    if(!session || !session.user.token)
+    return (
+        <main id='hospital-catalog' className="text-center p-5 h-full bg-stone-200 text-black">
+            <h1 className="text-xl font-medium">Select Your Hospital</h1>
+            {/* <CardPanel/> */}
+            <Suspense fallback={ <p>Loading ... <LinearProgress/></p>}>
+                <HospitalCatalog hospitalJson={hospitals}/>
+            </Suspense>
+        </main>
+    )
+    
     const profile = await getUserProfile(session.user.token)
     // var createdAt = new Date(profile.data.createdAt)
     
     return (
-        <main className="text-center p-5 h-full bg-stone-200 text-black">
+        <main id='hospital-catalog' className="text-center p-5 h-full bg-stone-200 text-black">
             <h1 className="text-xl font-medium">Select Your Hospital</h1>
             {/* <CardPanel/> */}
             <Suspense fallback={ <p>Loading ... <LinearProgress/></p>}>

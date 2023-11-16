@@ -23,7 +23,9 @@ export function PromoteCard() {
             <div className="m-5 text-black">
                 Get your vaccine today.
                 {/* ( {pointerPosition.x}, {pointerPosition.y}) */}
-                <button className='block rounded-md bg-sky-600 hover:bg-indigo-600 px-6 py-2 my-2 
+                <button 
+                id="playPauseButton"
+                className='block rounded-md bg-sky-600 hover:bg-indigo-600 px-6 py-2 my-2 
                 text-white shadow-sm'
                 onClick={()=>{ setPlaying(!playing) }}>
                     { playing? 'Pause':'Play' }

@@ -28,7 +28,7 @@ export default function Banner({imgSrc, topic, desc}:{imgSrc:string[], topic:str
                 session? <div className='z-30 absolute top-5 right-10 font-semibold text-xl'>Hello {session.user?.name}</div> 
                         : null
             }
-            <button className='bg-white text-cyan-600 border border-cyan-600
+            <button id='hospital-select-button' className='bg-white text-cyan-600 border border-cyan-600
             font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0
             hover:bg-cyan-600 hover:text-white hover:border-transparent'
             onClick={(e)=>{ e.stopPropagation(); router.push('/hospital')}}
